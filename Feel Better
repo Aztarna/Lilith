@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feel Better Soon ❤️</title>
+    <style>
+        body {
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
+            z-index: 10;
+            max-width: 80%;
+        }
+
+        h1 { color: #ff4d6d; }
+        p { color: #590d22; font-size: 1.2rem; }
+
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover { transform: scale(1.1); background-color: #ff758f; }
+
+        #quote-display {
+            margin-top: 20px;
+            font-style: italic;
+            font-weight: bold;
+            color: #c9184a;
+            min-height: 50px;
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            color: #ffb3c1;
+            font-size: 20px;
+            user-select: none;
+            animation: float 4s linear forwards;
+        }
+
+        @keyframes float {
+            to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hi Lilith ❤️</h1>
+        <p>I know yesterday was rough. I hope today you're feeling a little bit better.</p>
+        <div id="quote-display">Please plase click me...</div>
+        <button onclick="revealLove()">Click Me!</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "You are the strongest person I know.",
+            "I'm sending you all my healing energy!",
+            "I appreciate everything you do for me.",
+            "I'll always be here for you.",
+            "You are always the best part of my day",
+            "I love you more than anything in life."
+        ];
+
+        function revealLove() {
+            // Change Quote
+            const display = document.getElementById('quote-display');
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            display.innerText = randomQuote;
+
+            // Create Hearts
+            for (let i = 0; i < 15; i++) {
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+    </script>
+</body>
+</html>
